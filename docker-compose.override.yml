@@ -8,3 +8,21 @@ services:
     ports:
       - "8080:8080"  # Проброс порта
     command: make div
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+    restart: always
+    
+volumes:
+  caddy_data:
+  caddy_config:
