@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    # build: .
+    # volumes:
+    #   - ./app:/app
+    image: vvleonid/docker-project-74:latest
+    ports:
+      - "3000:3000"
